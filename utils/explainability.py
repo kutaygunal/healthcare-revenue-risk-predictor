@@ -58,10 +58,11 @@ class SimpleExplainer:
         return top_words
 
     @torch.no_grad()
-    def explain_structured(self, structured_vec, denial_logit, missed_logit, delta=0.01):
+    def explain_structured(self, structured_vec, text_indices, denial_logit, missed_logit, delta=0.01):
         """
         Approximate feature importance by perturbing each feature slightly.
         structured_vec: (1, struct_dim)
+        text_indices: (1, seq_len) actual text tokens
         """
         base_denial = torch.sigmoid(denial_logit).item()
         base_missed = torch.sigmoid(missed_logit).item()
@@ -69,7 +70,7 @@ class SimpleExplainer:
         for i in range(structured_vec.shape[1]):
             perturbed = structured_vec.clone()
             perturbed[0, i] += delta
-            d_logit, m_logit, _ = self.model(perturbed, torch.zeros((1, 64), dtype=torch.long).to(perturbed.device))
+            d_logit, m_logit, _ = self.model(perturbed, text_indices)
             new_denial = torch.sigmoid(d_logit).item()
             new_missed = torch.sigmoid(m_logit).item()
             denial_diff = new_denial - base_denial
@@ -92,7 +93,7 @@ class SimpleExplainer:
         """Full explanation bundle."""
         return {
             "top_text_tokens": self.explain_text(text_indices, text_attn),
-            "top_structured_features": self.explain_structured(structured_vec, denial_logit, missed_logit),
+            "top_structured_features": self.explain_structured(structured_vec, text_indices, denial_logit, missed_logit),
             "denial_probability": round(float(torch.sigmoid(denial_logit).item()), 4),
             "missed_revenue_probability": round(float(torch.sigmoid(missed_logit).item()), 4),
         }
