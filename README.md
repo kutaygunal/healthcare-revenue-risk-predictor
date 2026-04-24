@@ -153,6 +153,10 @@ streamlit run frontend/predict_ui.py
 | **Structured Drivers** | Top 5 features pushing prediction up/down |
 | **Text Attention** | Bar chart of high-attention clinical terms |
 
+**Screenshot:**
+
+![Prediction UI](UI-HealthCare-Revenue-Risk-Predictor.png)
+
 ---
 
 ### Option C: Streamlit KPI Dashboard
