@@ -1,6 +1,6 @@
 # Healthcare Revenue Risk Predictor
 
-A PyTorch-based healthcare revenue risk prediction system using **structured claim features** and **clinical text**. Built to mirror the type of clinical AI used in hospital revenue cycle management — like what SmarterDx builds.
+A PyTorch-based healthcare revenue risk prediction system using **structured claim features** and **clinical text**. Built to mirror the type of clinical AI used in hospital revenue cycle management.
 
 ## What It Does
 
