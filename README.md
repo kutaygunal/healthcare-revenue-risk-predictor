@@ -1,6 +1,6 @@
 # Healthcare Revenue Risk Predictor
 
-A **PyTorch-based clinical AI system** that predicts hospital claim denial risk and missed billing opportunity using **structured claim features** and **clinical free-text**. Built in the style of hospital revenue-cycle AI (e.g., SmarterDx).
+A **PyTorch-based clinical AI system** that predicts hospital claim denial risk and missed billing opportunity using **structured claim features** and **clinical free-text**. Built in the style of hospital revenue-cycle AI
 
 ---
 
