@@ -1,6 +1,32 @@
 # Healthcare Revenue Risk Predictor
 
-A **PyTorch-based clinical AI system** that predicts hospital claim denial risk and missed billing opportunity using **structured claim features** and **clinical free-text**. Built in the style of hospital revenue-cycle AI
+A **PyTorch-based clinical AI system** that predicts hospital claim denial risk and missed billing opportunity using **structured claim features** and **clinical free-text**.
+
+---
+
+## The Problem
+
+Hospitals lose billions every year because insurance claims are **denied** or because they **under-code** services that were actually performed. Most of this is caught too late — after the claim is already submitted.
+
+This application solves two specific problems:
+
+### 1. Claim Denials
+Insurance companies reject claims for reasons like mismatched diagnosis/procedure codes, missing documentation, or stays that look disproportionately expensive. When a denial happens:
+- The hospital gets paid $0 initially
+- Staff must spend hours appealing or resubmitting
+- Some revenue is lost permanently
+
+### 2. Missed Billing Opportunities
+A patient may have complications, secondary diagnoses, or procedures that never get coded into the claim. The hospital bills for a simpler, cheaper stay than what actually happened. The claim gets paid — but for less money than it deserved. This is hard to catch because:
+- Free-text clinical notes contain clues that coders might miss
+- No one systematically compares chart documentation to final billing
+
+### The Solution
+This model scores every claim **before submission** and flags:
+- How likely it is to be **denied**
+- How likely it is to be **under-coded** (missed revenue)
+- Which **structured features** and **clinical text phrases** are driving that risk
+- The **estimated dollar amount** a hospital could recover by fixing the claim
 
 ---
 
@@ -238,18 +264,6 @@ The synthetic data generator creates realistic risk signals. The model learns to
 | Long stay + low procedural complexity | No principal procedure coded |
 | AMA discharge | Missing secondary diagnoses |
 | High cost per day | Clinical note mentions complications but coding doesn't reflect them |
-
----
-
-## Why This Fits the SmarterDx Profile
-
-- **Hospital revenue cycle** domain
-- **Structured + unstructured (text)** data fusion
-- **PyTorch** deep learning
-- **Explainable AI** — clinical and business interpretability
-- **Business KPIs** — recoverable revenue estimation
-- **FastAPI** deployable endpoint
-- **Simulated data warehouse** pipeline (Snowflake-style)
 
 ---
 
