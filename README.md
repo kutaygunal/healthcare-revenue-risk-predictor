@@ -3,7 +3,11 @@
 A **PyTorch-based clinical AI system** that predicts hospital claim denial risk and missed billing opportunity using **structured claim features** and **clinical free-text**.
 
 ---
+**Screenshot:**
 
+![Prediction UI](UI-HealthCare-Revenue-Risk-Predictor.png)
+
+---
 ## The Problem
 
 Hospitals lose billions every year because insurance claims are **denied** or because they **under-code** services that were actually performed. Most of this is caught too late — after the claim is already submitted.
@@ -179,9 +183,7 @@ streamlit run frontend/predict_ui.py
 | **Structured Drivers** | Top 5 features pushing prediction up/down |
 | **Text Attention** | Bar chart of high-attention clinical terms |
 
-**Screenshot:**
 
-![Prediction UI](UI-HealthCare-Revenue-Risk-Predictor.png)
 
 ---
 
